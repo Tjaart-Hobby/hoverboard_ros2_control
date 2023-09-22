@@ -105,9 +105,9 @@ def generate_launch_description():
     return LaunchDescription([
         control_node,
         robot_state_pub_node,
-        joint_state_broadcaster_spawner,
-        robot_controller_spawner,
-        rviz_node,
-        joy_node,
-        teleop_twist_joy_node,
+       # joint_state_broadcaster_spawner,
+       # robot_controller_spawner,
+       # rviz_node,
+       # joy_node,
+       # teleop_twist_joy_node,
     ])
