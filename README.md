@@ -1,3 +1,4 @@
+# I dont have this driver working yet with my PI4 
 # ROS2 Control Hoverboard Hardware Interface
 
 ROS2 Control hardware interface for Hoverboard motors. Implementation in C++ with Boost libraries. All steering and feedback messages are transmitted by serial port communication.
