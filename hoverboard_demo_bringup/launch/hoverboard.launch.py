@@ -39,17 +39,17 @@ def generate_launch_description():
         ]
     )
 
-    rviz_config_file = PathJoinSubstitution(
-        [
-            FindPackageShare("hoverboard_demo_description"), "rviz", "hoverboard.rviz"
-        ]
-    )
+#    rviz_config_file = PathJoinSubstitution(
+#        [
+#            FindPackageShare("hoverboard_demo_description"), "rviz", "hoverboard.rviz"
+#        ]
+#    )
 
-    teleop_twist_joy_config_file = PathJoinSubstitution(
-        [
-            FindPackageShare("hoverboard_demo_bringup"), "config", "ps4.config.yaml",
-        ]
-    )
+#    teleop_twist_joy_config_file = PathJoinSubstitution(
+#        [
+#            FindPackageShare("hoverboard_demo_bringup"), "config", "ps4.config.yaml",
+#        ]
+#    )
 
     control_node = Node(
         package="controller_manager",
@@ -77,36 +77,36 @@ def generate_launch_description():
         arguments=["hoverboard_base_controller", "-c", "/controller_manager"]
     )
 
-    rviz_node = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        arguments=["-d", rviz_config_file],
-    )
+#    rviz_node = Node(
+#        package="rviz2",
+#        executable="rviz2",
+#        name="rviz2",
+#        arguments=["-d", rviz_config_file],
+#    )
 
-    joy_node = Node(
-        package='joy', executable='joy_node', name='joy_node',
-        parameters=[{
-            'deadzone': 0.05,
-            'autorepeat_rate': 30.0
-        }],
-    )
+#    joy_node = Node(
+#        package='joy', executable='joy_node', name='joy_node',
+#        parameters=[{
+#            'deadzone': 0.05,
+#            'autorepeat_rate': 30.0
+#        }],
+#    )
 
-    teleop_twist_joy_node = Node(
-        package='teleop_twist_joy',
-        executable='teleop_node',
-        name='teleop_twist_joy_node',
-        parameters=[teleop_twist_joy_config_file],
-        remappings=[
-            ('/cmd_vel', '/hoverboard_base_controller/cmd_vel_unstamped'),
-        ]
-    )
+#    teleop_twist_joy_node = Node(
+#        package='teleop_twist_joy',
+#        executable='teleop_node',
+#        name='teleop_twist_joy_node',
+#        parameters=[teleop_twist_joy_config_file],
+#        remappings=[
+#            ('/cmd_vel', '/hoverboard_base_controller/cmd_vel_unstamped'),
+#        ]
+#    )
 
     return LaunchDescription([
         control_node,
         robot_state_pub_node,
-       # joint_state_broadcaster_spawner,
-       # robot_controller_spawner,
+        joint_state_broadcaster_spawner,
+        robot_controller_spawner,
        # rviz_node,
        # joy_node,
        # teleop_twist_joy_node,
